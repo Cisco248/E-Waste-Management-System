@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:e_wms_mobile/themes/theme.dart';
-import 'widgets/export_widgets.dart';
+import 'package:e_wms_mobile/widgets/export_widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,101 +17,68 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       darkTheme: AppTheme.darkTheme,
       theme: AppTheme.lightTheme,
-      home: BottomSection(title: 'waste'),
+      home: LandingPage(),
     );
   }
 }
 
-class BottomSection extends StatefulWidget {
-  const BottomSection({super.key, required this.title});
-  final String title;
+class LandingPage extends StatelessWidget {
+  const LandingPage({super.key});
 
-  @override
-  State<BottomSection> createState() => _BottomSectionState();
-}
-
-class _BottomSectionState extends State<BottomSection> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      bottom: false,
-      left: true,
-      right: true,
-      minimum: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            widget.title,
-            style: Theme.of(context).textTheme.displayMedium,
+    return Scaffold(
+      body: Stack(
+        alignment: AlignmentDirectional.topCenter,
+        fit: StackFit.passthrough,
+        children: [
+          LandingTop(),
+          Align(alignment: Alignment.bottomCenter, child: LandingBottom()),
+        ],
+      ),
+      bottomNavigationBar: NavbarWidget(),
+    );
+  }
+}
+
+class LandingTop extends StatelessWidget {
+  const LandingTop({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 1 / 6,
+      width: MediaQuery.of(context).size.width,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Row(
+            spacing: 10,
+            children: [
+              Container(
+                width: 64,
+                height: 64,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [Text('Good Morning,'), Text('User Name')],
+              ),
+            ],
           ),
-        ),
-        body: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Align(
-                  alignment: AlignmentGeometry.xy(-1, 0),
-                  child: Text('Goal', style: TextStyle(fontSize: 20)),
-                ),
-                Column(
-                  spacing: 0,
-                  children: [
-                    CardMedium(
-                      img: AssetImage('lib/images/ravi.jpg'),
-                      title: 'Card One',
-                      description: 'Description Two',
-                    ),
-                    CardMedium(
-                      img: AssetImage('lib/images/ravi.jpg'),
-                      title: 'Card One',
-                      description: 'Description Two',
-                    ),
-                  ],
-                ),
-                Align(
-                  alignment: AlignmentGeometry.directional(-0.9, 1),
-                  child: Text('News', style: TextStyle(fontSize: 20)),
-                ),
-                Column(
-                  spacing: 0,
-                  children: [
-                    CardMedium(
-                      img: AssetImage('lib/images/ravi.jpg'),
-                      title: 'Card One',
-                      description: 'Description Two',
-                    ),
-                    CardMedium(
-                      img: AssetImage('lib/images/ravi.jpg'),
-                      title: 'Card One',
-                      description: 'Description Two',
-                    ),
-                  ],
-                ),
-                Align(
-                  alignment: AlignmentGeometry.directional(-0.9, 1),
-                  child: Text('Announcement', style: TextStyle(fontSize: 20)),
-                ),
-                Column(
-                  spacing: 0,
-                  children: [
-                    CardLarge(
-                      img: AssetImage('lib/images/ravi.jpg'),
-                      title: 'Card Title One',
-                      description: 'Card Description One',
-                    ),
-                    CardLarge(
-                      img: AssetImage('lib/images/ravi.jpg'),
-                      title: 'Card Title One',
-                      description: 'Card Description One',
-                    ),
-                  ],
-                ),
-              ],
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              CircleAvatar(backgroundColor: Colors.white, radius: 16),
+              SizedBox(height: 5),
+              Text('Token: 0'),
+            ],
           ),
-        ),
+        ],
       ),
     );
   }

@@ -13,7 +13,9 @@ class AppInputTheme {
       borderSide: BorderSide(color: ColorConstant.primary),
     ),
     enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: ColorConstant.primary.withOpacity(0.5)),
+      borderSide: BorderSide(
+        color: ColorConstant.primary.withValues(alpha: .5),
+      ),
     ),
     focusedBorder: OutlineInputBorder(
       borderSide: BorderSide(color: ColorConstant.primary),
@@ -32,7 +34,9 @@ class AppInputTheme {
       borderSide: BorderSide(color: ColorConstant.primary),
     ),
     enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: ColorConstant.primary.withOpacity(0.5)),
+      borderSide: BorderSide(
+        color: ColorConstant.primary.withValues(alpha: 0.5),
+      ),
     ),
     focusedBorder: OutlineInputBorder(
       borderSide: BorderSide(color: ColorConstant.primary),

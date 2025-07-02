@@ -9,7 +9,7 @@ class AppTheme {
   static final lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Colors.grey,
     appBarTheme: AppHeaderTheme.lightHeaderTheme,
     cardTheme: AppCardTheme.cardLightTheme,
     textTheme: AppTextStyles.textLightTheme,
