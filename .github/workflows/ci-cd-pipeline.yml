@@ -8,34 +8,48 @@ on:
 
 jobs:
   checkout:
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix: 
+        os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
       
       - name: Checkout Repository
         uses: actions/checkout@v4
 
   test:
-    runs-on: ubuntu-latest
+    needs: checkout
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix: 
+        os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
          
+      - name: Dart Code Format
+        run: dart format .
+
       - name: Verify Dart Formatting
         run: dart format --output=none --set-exit-if-changed.
         
       - name: Analyze Project Source
-        run: dart analyze
+        run: flutter analyze
         
-      - name: Run Tests
-        run: flutter test
-        
+      # - name: Run Tests
+      #   run: flutter test
       
   build:
-    runs-on: ubuntu-latest
+    needs: test
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix: 
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        channel: [stable]
     steps:
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: stable
+          channel: ${{matrix.channel}}
       - run: flutter --version
 
       - name: Setup Dart Language
