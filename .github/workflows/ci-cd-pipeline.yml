@@ -7,27 +7,18 @@ on:
     branches: [ "master" ]
 
 jobs:
-  checkout:
+  build:
     runs-on: ${{matrix.os}}
     outputs:
-      checkout_id: ${{ steps.checkout_step.outputs.commit }}
-    strategy:
-      matrix: 
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    steps:
-      
-      - name: Checkout Repository
-        id: checkout_step
-        uses: actions/checkout@v4
-
-  build:
-    needs: checkout
-    runs-on: ${{matrix.os}}
+      build_id: ${{steps.final.outputs.commit}}
     strategy:
       matrix: 
         os: [ubuntu-latest, macos-latest, windows-latest]
         channel: [stable]
     steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -36,10 +27,11 @@ jobs:
       - run: flutter --version
         
       - name: Install Dependencies
-        run: cd ls
+        id: final
+        run: flutter pub get
         
   test:
-    needs: [build, checkout]
+    needs: build
     runs-on: ${{matrix.os}}
     strategy:
       matrix: 
