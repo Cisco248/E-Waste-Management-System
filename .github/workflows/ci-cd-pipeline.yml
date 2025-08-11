@@ -17,28 +17,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-  test:
-    needs: checkout
-    runs-on: ${{matrix.os}}
-    strategy:
-      matrix: 
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    steps:
-         
-      - name: Dart Code Format
-        run: dart format .
-
-      - name: Verify Dart Formatting
-        run: dart format --output=none --set-exit-if-changed.
-        
-      - name: Analyze Project Source
-        run: flutter analyze
-        
-      # - name: Run Tests
-      #   run: flutter test
-      
   build:
-    needs: test
+    needs: checkout
     runs-on: ${{matrix.os}}
     strategy:
       matrix: 
@@ -58,3 +38,22 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
         
+  test:
+    needs: build
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix: 
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+         
+      - name: Dart Code Format
+        run: dart format .
+
+      - name: Verify Dart Formatting
+        run: dart format --output=none --set-exit-if-changed.
+        
+      - name: Analyze Project Source
+        run: flutter analyze
+        
+      # - name: Run Tests
+      #   run: flutter test
