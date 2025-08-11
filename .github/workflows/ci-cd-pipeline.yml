@@ -1,0 +1,46 @@
+name: E-Waste Mobile Application CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+         
+      - name: Verify Dart Formatting
+        run: dart format --output=none --set-exit-if-changed.
+        
+      - name: Analyze Project Source
+        run: dart analyze
+        
+      - name: Run Tests
+        run: flutter test
+        
+      
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter --version
+
+      - name: Setup Dart Language
+        uses: dart-lang/setup-dart@v1
+        
+      - name: Install Dependencies
+        run: flutter pub get
+        
