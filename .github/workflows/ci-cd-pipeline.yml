@@ -34,12 +34,9 @@ jobs:
         with:
           channel: ${{matrix.channel}}
       - run: flutter --version
-
-      - name: Setup Dart Language
-        uses: dart-lang/setup-dart@v1
         
       - name: Install Dependencies
-        run: flutter pub get
+        run: cd ls
         
   test:
     needs: [build, checkout]
@@ -57,6 +54,7 @@ jobs:
         
       - name: Analyze Project Source
         run: flutter analyze
+        working-directory: ./your_project_directory
         
       # - name: Run Tests
       #   run: flutter test
