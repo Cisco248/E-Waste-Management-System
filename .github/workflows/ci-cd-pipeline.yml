@@ -10,7 +10,7 @@ jobs:
   checkout:
     runs-on: ${{matrix.os}}
     outputs:
-      checkout_id: ${{ steps.checkout_step.outputs }}
+      checkout_id: ${{ steps.checkout_step.outputs.commit }}
     strategy:
       matrix: 
         os: [ubuntu-latest, macos-latest, windows-latest]
