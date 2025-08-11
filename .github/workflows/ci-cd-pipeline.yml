@@ -9,12 +9,15 @@ on:
 jobs:
   checkout:
     runs-on: ${{matrix.os}}
+    outputs:
+      checkout_id: ${{ steps.checkout_step.outputs }}
     strategy:
       matrix: 
         os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
       
       - name: Checkout Repository
+        id: checkout_step
         uses: actions/checkout@v4
 
   build:
@@ -39,7 +42,7 @@ jobs:
         run: flutter pub get
         
   test:
-    needs: build
+    needs: [build, checkout]
     runs-on: ${{matrix.os}}
     strategy:
       matrix: 
