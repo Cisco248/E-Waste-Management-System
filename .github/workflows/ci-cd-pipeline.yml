@@ -7,10 +7,8 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  build_and_test:
     runs-on: ${{matrix.os}}
-    outputs:
-      build_id: ${{steps.final.outputs.commit}}
     strategy:
       matrix: 
         os: [ubuntu-latest, macos-latest, windows-latest]
@@ -26,24 +24,12 @@ jobs:
           channel: ${{matrix.channel}}
       - run: flutter --version
 
-      - name: Setup Dart
+      - name: Install Dart SDK
         uses: dart-lang/setup-dart@v1
         
-      - name: Install Dart SDK
-        run: dart pub get
-        
-      - name: Install Dependencies
-        id: final
+      - name: Install Flutter SDK & Dependencies
         run: flutter pub get
-        
-  test:
-    needs: build
-    runs-on: ${{matrix.os}}
-    strategy:
-      matrix: 
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    steps:
-         
+
       - name: Dart Code Format
         run: dart format .
 
@@ -52,7 +38,6 @@ jobs:
         
       - name: Analyze Project Source
         run: flutter analyze
-        working-directory: ./your_project_directory
         
       # - name: Run Tests
       #   run: flutter test
