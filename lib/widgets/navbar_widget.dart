@@ -26,7 +26,6 @@ class NavbarWidget extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) => LandingPage()),
               );
-              print('Tap Home Button');
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -43,7 +42,6 @@ class NavbarWidget extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) => LocateBootom()),
               );
-              print('Tap Locate Button');
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +54,6 @@ class NavbarWidget extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              print('Tap Token Button');
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -69,7 +66,6 @@ class NavbarWidget extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              print('Tap Redeem');
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -82,7 +78,6 @@ class NavbarWidget extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              print('Tap Profile');
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
