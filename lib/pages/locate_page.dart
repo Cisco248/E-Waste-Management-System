@@ -2,8 +2,22 @@ import 'package:e_wms_mobile/constants/color.dart';
 import 'package:e_wms_mobile/constants/size.dart';
 import 'package:flutter/material.dart';
 
-class LocateBootom extends StatelessWidget {
-  const LocateBootom({super.key});
+class LocateBinPage extends StatefulWidget {
+  const LocateBinPage({super.key});
+
+  @override
+  State<LocateBinPage> createState() => _LocateBinPageState();
+}
+
+class _LocateBinPageState extends State<LocateBinPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(child: LocateBottom());
+  }
+}
+
+class LocateBottom extends StatelessWidget {
+  const LocateBottom({super.key});
 
   @override
   Widget build(BuildContext context) {

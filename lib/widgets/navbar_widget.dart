@@ -1,7 +1,5 @@
 import 'package:e_wms_mobile/constants/color.dart';
 import 'package:e_wms_mobile/constants/size.dart';
-import 'package:e_wms_mobile/main.dart';
-import 'package:e_wms_mobile/widgets/locate_widget.dart';
 import 'package:flutter/material.dart';
 
 class NavbarWidget extends StatelessWidget {
@@ -9,81 +7,75 @@ class NavbarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double iconSize = 32;
-    final navBarColor = ColorConstant.divider;
-
     return Container(
       height: AppSizeStyle.naviBarHeight(context),
       width: AppSizeStyle.naviBarWidth(context),
       padding: EdgeInsets.all(5),
-      color: navBarColor,
+      color: ColorConstant.divider,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => LandingPage()),
-              );
+              Navigator.pushNamed(context, '/');
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               spacing: 2,
               children: [
-                Icon(Icons.home_rounded, size: iconSize),
-                Text('Home', style: Theme.of(context).textTheme.labelMedium),
+                Icon(Icons.home_rounded, size: IconSize.size_32),
+                Text("Home", style: Theme.of(context).textTheme.labelMedium),
               ],
             ),
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => LocateBootom()),
-              );
+              Navigator.pushNamed(context, '/locate');
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               spacing: 2,
               children: [
-                Icon(Icons.location_searching, size: iconSize),
+                Icon(Icons.location_searching, size: IconSize.size_32),
                 Text('Locate', style: Theme.of(context).textTheme.labelMedium),
               ],
             ),
           ),
           GestureDetector(
             onTap: () {
+              Navigator.pushNamed(context, '/token');
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               spacing: 2,
               children: [
-                Icon(Icons.token, size: iconSize),
+                Icon(Icons.token, size: IconSize.size_32),
                 Text('Token', style: Theme.of(context).textTheme.labelMedium),
               ],
             ),
           ),
           GestureDetector(
             onTap: () {
+              Navigator.pushNamed(context, '/redeem');
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               spacing: 2,
               children: [
-                Icon(Icons.redeem, size: iconSize),
+                Icon(Icons.redeem, size: IconSize.size_32),
                 Text('Redeem', style: Theme.of(context).textTheme.labelMedium),
               ],
             ),
           ),
           GestureDetector(
             onTap: () {
+              Navigator.pushNamed(context, '/profile');
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               spacing: 2,
               children: [
-                Icon(Icons.person, size: iconSize),
+                Icon(Icons.person, size: IconSize.size_32),
                 Text('Profile', style: Theme.of(context).textTheme.labelMedium),
               ],
             ),

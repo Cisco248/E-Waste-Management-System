@@ -24,7 +24,7 @@ class ColorConstant {
   static const Color textPrimary = Color(0xFF212121); // Almost black
   static const Color textSecondary = Color(0xFF757575); // Grey
 
-  // Status Colors
+  // System Colors
   static const Color success = Color(0xFF4CAF50);
   static const Color warning = Color(0xFFFF9800);
   static const Color error = Color(0xFFF44336);
@@ -34,12 +34,24 @@ class ColorConstant {
   static const Color disabled = Color(0xFFBDBDBD);
   static const Color divider = Color(0xFFBDBDBD);
 
-  static const Color lightshadowcolor = Color.fromARGB(100, 0, 0, 0);
-  static const Color darkshadowcolor = Color.fromARGB(100, 255, 255, 255);
+  // Border Colors
+  static const Color lightDefaultBorderColor = Color(0x7CFFFFFF);
+  static const Color lightFocusBorderColor = ColorConstant.primary;
+  static const Color lightErrorBorderColor = ColorConstant.error;
 
-  // static const Color lightheaderbgcolor = Color(value);
-  // static const Color darkheaderbgcolor = Color(value);
+  static const Color darkDefaultBorderColor = Color(0x7CFFFFFF);
+  static const Color darkFocusBorderColor = ColorConstant.primary;
+  static const Color darkErrorBorderColor = ColorConstant.error;
 
-  static const Color lightcardbgcolor = Color(0xFFEBEBEB);
-  static const Color darkcardbgcolor = Color(0xFF1B1B1B);
+  // Shadow Colors
+  static const Color lightShadowColor = Color.fromARGB(100, 0, 0, 0);
+  static const Color darkShadowColor = Color.fromARGB(100, 255, 255, 255);
+
+  // Header Background Colors
+  static const Color lightHeaderBgColor = Color(0xFF212121);
+  static const Color darkHeaderBgColor = Color(0xFF757575);
+
+  // Card Background Colors
+  static const Color lightCardBgColor = Color(0xFFEBEBEB);
+  static const Color darkCardBgColor = Color(0xFF1B1B1B);
 }
