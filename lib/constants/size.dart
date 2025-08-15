@@ -10,6 +10,13 @@ class AppSizeStyle {
   static double fullHeight(BuildContext context) =>
       MediaQuery.of(context).size.height;
 
+  // Header Bar Size
+  static double headerBarWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width;
+
+  static double headerBarHeight(BuildContext context) =>
+      MediaQuery.of(context).size.height * 1 / 6;
+
   // Navigation Bar Sizes
   static double naviBarWidth(BuildContext context) =>
       MediaQuery.of(context).size.width;
@@ -30,4 +37,11 @@ class AppSizeStyle {
 
   static double locateBottomWidth(BuildContext context) =>
       MediaQuery.of(context).size.width;
+}
+
+class IconSize {
+  IconSize._();
+
+  static double size_32 = 32;
+  static double size_64 = 64;
 }

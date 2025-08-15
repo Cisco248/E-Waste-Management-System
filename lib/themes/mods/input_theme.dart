@@ -5,44 +5,70 @@ class AppInputTheme {
   const AppInputTheme._();
 
   static final inputAppLightTheme = InputDecorationTheme(
-    filled: true,
+    filled: false,
     fillColor: ColorConstant.lightBackground,
     contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: ColorConstant.primary),
+      borderSide: BorderSide(
+        color: ColorConstant.lightDefaultBorderColor,
+        width: 2,
+      ),
     ),
     enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
       borderSide: BorderSide(
-        color: ColorConstant.primary.withValues(alpha: .5),
+        color: ColorConstant.lightDefaultBorderColor,
+        width: 2,
       ),
     ),
     focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: ColorConstant.primary),
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(
+        color: ColorConstant.lightFocusBorderColor,
+        width: 2,
+      ),
     ),
     errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: ColorConstant.error),
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(
+        color: ColorConstant.lightErrorBorderColor,
+        width: 2,
+      ),
     ),
   );
 
   static final inputAppDarkTheme = InputDecorationTheme(
-    filled: true,
+    filled: false,
     fillColor: ColorConstant.darkBackground,
     contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: ColorConstant.primary),
+      borderSide: BorderSide(
+        color: ColorConstant.darkDefaultBorderColor,
+        width: 2,
+      ),
     ),
     enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
       borderSide: BorderSide(
-        color: ColorConstant.primary.withValues(alpha: 0.5),
+        color: ColorConstant.darkDefaultBorderColor,
+        width: 2,
       ),
     ),
     focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: ColorConstant.primary),
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(
+        color: ColorConstant.darkFocusBorderColor,
+        width: 2,
+      ),
     ),
     errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: ColorConstant.error),
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(
+        color: ColorConstant.darkErrorBorderColor,
+        width: 2,
+      ),
     ),
   );
 }

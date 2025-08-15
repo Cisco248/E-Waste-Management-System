@@ -5,7 +5,7 @@ class AppCardTheme {
   AppCardTheme._();
 
   static final cardLightTheme = CardThemeData(
-    color: ColorConstant.lightcardbgcolor,
+    color: ColorConstant.lightBackground,
     surfaceTintColor: Colors.transparent,
     shadowColor: Colors.black12,
     elevation: 4,
@@ -15,7 +15,7 @@ class AppCardTheme {
   );
 
   static final cardDarkTheme = CardThemeData(
-    color: ColorConstant.darkcardbgcolor,
+    color: ColorConstant.darkBackground,
     surfaceTintColor: Colors.transparent,
     shadowColor: Colors.black45,
     elevation: 4,

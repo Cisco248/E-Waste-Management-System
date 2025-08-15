@@ -1,7 +1,31 @@
 import 'package:e_wms_mobile/constants/size.dart';
-import 'package:flutter/material.dart';
+import 'package:e_wms_mobile/widgets/app_header.dart';
 import 'package:e_wms_mobile/widgets/card_large.dart';
 import 'package:e_wms_mobile/widgets/card_medium.dart';
+import 'package:e_wms_mobile/widgets/text_divider_widget.dart';
+import 'package:flutter/material.dart';
+
+class LandingPage extends StatelessWidget {
+  const LandingPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        alignment: AlignmentDirectional.topCenter,
+        fit: StackFit.passthrough,
+        children: [
+          AppHeader(
+            userName: 'Cisco248',
+            tokenValue: 12,
+            img: AssetImage('lib/images/ravi.jpg'),
+          ),
+          Align(alignment: Alignment.bottomCenter, child: LandingBottom()),
+        ],
+      ),
+    );
+  }
+}
 
 class LandingBottom extends StatefulWidget {
   const LandingBottom({super.key});
@@ -21,8 +45,8 @@ class _LandingBottomState extends State<LandingBottom> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadiusDirectional.only(
-          topEnd: Radius.circular(50),
-          topStart: Radius.circular(50),
+          topEnd: Radius.circular(30),
+          topStart: Radius.circular(30),
         ),
       ),
       child: Center(
@@ -30,10 +54,7 @@ class _LandingBottomState extends State<LandingBottom> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Align(
-                alignment: AlignmentGeometry.xy(-0.9, 1),
-                child: Text('Goal', style: TextStyle(fontSize: 20)),
-              ),
+              TextDividerWidget(text: 'Goal'),
               Column(
                 spacing: 0,
                 children: [
@@ -49,10 +70,7 @@ class _LandingBottomState extends State<LandingBottom> {
                   ),
                 ],
               ),
-              Align(
-                alignment: AlignmentGeometry.directional(-0.9, 1),
-                child: Text('News', style: TextStyle(fontSize: 20)),
-              ),
+              TextDividerWidget(text: 'News'),
               Column(
                 spacing: 0,
                 children: [
@@ -68,10 +86,7 @@ class _LandingBottomState extends State<LandingBottom> {
                   ),
                 ],
               ),
-              Align(
-                alignment: AlignmentGeometry.directional(-0.9, 1),
-                child: Text('Announcement', style: TextStyle(fontSize: 20)),
-              ),
+              TextDividerWidget(text: 'Announcement'),
               Column(
                 spacing: 0,
                 children: [
