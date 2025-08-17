@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 class MainWrapper extends StatefulWidget {
   const MainWrapper({super.key});
+  static const route = '/home';
 
   @override
   State<MainWrapper> createState() => _MainWrapperState();

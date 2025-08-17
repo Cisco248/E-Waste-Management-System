@@ -3,6 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:e_wms_mobile/widgets/card_large.dart';
 import 'package:e_wms_mobile/widgets/card_medium.dart';
 
+class LandingPage extends StatelessWidget {
+  const LandingPage({super.key});
+  static const route = '/home';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        alignment: AlignmentDirectional.topCenter,
+        fit: StackFit.passthrough,
+        children: [
+          Align(alignment: Alignment.bottomCenter, child: LandingBottom()),
+        ],
+      ),
+    );
+  }
+}
+
 class LandingBottom extends StatefulWidget {
   const LandingBottom({super.key});
 
