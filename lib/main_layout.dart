@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 
 class MainWrapper extends StatefulWidget {
   const MainWrapper({super.key});
-  static const route = '/home';
 
   @override
   State<MainWrapper> createState() => _MainWrapperState();
@@ -36,7 +35,6 @@ class _MainWrapperState extends State<MainWrapper> {
     return Scaffold(
       appBar: AppBar(
         title: SizedBox(
-          height: 100,
           width: MediaQuery.of(context).size.width,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

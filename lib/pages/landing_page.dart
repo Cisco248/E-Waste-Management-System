@@ -5,7 +5,6 @@ import 'package:e_wms_mobile/widgets/card_medium.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
-  static const route = '/home';
 
   @override
   Widget build(BuildContext context) {

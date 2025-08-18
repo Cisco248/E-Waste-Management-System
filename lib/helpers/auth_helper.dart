@@ -1,30 +1,54 @@
 import 'package:e_wms_mobile/constants/auth.dart';
+import 'package:e_wms_mobile/constants/text.dart';
 
 class UserStore {
+
   final Map<String, String> _users = {};
 
-  bool emailExists(String email) => _users.containsKey(email);
-
-  Future<void> createUser(String email, String password) async {
-    await Future.delayed(const Duration(milliseconds: 300));
-    if (emailExists(email)) {
-      throw AuthException('Email already registered');
-    }
-    _users[email] = password;
+  bool emailExists(String inputEmail) {
+    return email == inputEmail;
   }
 
-  Future<User> signIn(String email, String password) async {
-    await Future.delayed(const Duration(milliseconds: 300));
-    if (!_users.containsKey(email) || _users[email] != password) {
-      throw AuthException('Invalid email or password');
+  bool login(String inputEmail, String inputPassword) {
+    return email == inputEmail && password == inputPassword;
+  }
+
+  Future<void> createUser(
+    String inputEmail, 
+    String inputPassword, 
+    String? confirmPassword, 
+    String? firstName, 
+    String? lastName, 
+    int? mobileNum,
+    ) async {
+      try {
+        await Future.delayed(const Duration(milliseconds: 500));
+        if (emailExists(inputEmail)) {
+          throw AuthException(emailExistsText);
+        } 
+        else {
+          _users['email'] = inputEmail;
+          _users['password'] = inputPassword;
+        }
+      } catch (e) {
+        throw AuthException(loginError);
+      }
+  }
+
+  void logOut(String inputEmail) {
+    if (email == inputEmail) {
+      email = '';
     }
-    return User(email, password);
+    else {
+      throw AuthException(logOutError);
+    }
   }
 }
 
 class AuthException implements Exception {
   final String message;
   AuthException(this.message);
+  
   @override
   String toString() => message;
 }
